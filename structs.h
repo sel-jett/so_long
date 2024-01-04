@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:37:44 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 06:30:40 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/04 21:28:57 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_schr
 	int		width;
 	int		height;
 	int		move;
-	void	*arr[6];
+	void	*arr[10];
 	void	*p_mlx;
 	void	*w_mlx;
 }	t_maps;

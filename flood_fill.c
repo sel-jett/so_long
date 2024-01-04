@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 01:18:40 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 02:07:13 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/04 23:09:43 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,10 @@ static char	**map_copy(t_maps *map)
 	return (cpy);
 }
 
-
 static void	flood_fill(t_maps *map, char **cpy, int i, int j)
 {
-	// int	k = 0;
-	// int	s = 0;
-	// while (map->map[k])
-	// {
-	// 	s = 0;
-	// 	while (map->map[k][s])
-	// 		printf("%c", map->map[k][s++]);
-	// 	puts("");
-	// 	k++;
-	// }
-	// exit(1);
 	if (i < 0 || j < 0 || j >= map->width || i >= map->height \
-		 || cpy[i][j] == 'z' || cpy[i][j] == '1')
+		|| cpy[i][j] == 'z' || cpy[i][j] == '1')
 		return ;
 	cpy[i][j] = 'z';
 	flood_fill(map, cpy, i + 1, j);
@@ -69,7 +57,6 @@ static int	check_flood(char **cpy)
 		}
 		i++;
 	}
-	puts("9alwa");
 	return (1);
 }
 
@@ -78,9 +65,7 @@ int	valid_flood(t_maps *map)
 	char	**cpy;
 
 	cpy = map_copy(map);
-	// printf("%d >>>> %d\n", map->py, map->px);
 	flood_fill(map, cpy, map->py, map->px);
-	// exit(1);
 	if (!check_flood(cpy))
 		return (0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:29:42 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 06:31:35 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/04 23:35:20 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,16 @@ void	ft_init_map(t_maps *maps)
 	maps->move = 0;
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_maps	*maps;
-	int i;
+	int		i;
 
 	i = 0;
 	ft_check_args(ac, av);
 	maps = my_malloc(sizeof(t_maps), 1);
 	ft_init_map(maps);
 	maps->map = ft_split(ft_check_map(av[1], maps), '\n');
-	// printf("%d >>> %d\n", maps->height, maps->width);
-	// while (maps->map[i])
-	// {
-	// 	j = 0;
-	// 	while (maps->map[i][j])
-	// 		printf("%c", maps->map[i][j++]);
-	// 	puts("");
-	// 	i++;
-	// }
 	if (!valid_flood(maps))
 		exit(1);
 	ft_mlx(maps);

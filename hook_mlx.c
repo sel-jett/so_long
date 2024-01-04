@@ -6,86 +6,67 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 05:16:01 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 06:50:26 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/04 23:08:58 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	ft_exit()
+static int	ft_exit(void)
 {
 	exit(1);
 }
 
-// static void	count_coin(t_maps *maps)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	count;
+void	ft_helper(t_maps *maps, int x, int y, int *check)
+{
+	if (maps->map[maps->py][maps->px] != '1')
+	{
+		maps->map[maps->py][maps->px] = 'P';
+		maps->map[maps->exit_y][maps->exit_x] = 'E';
+	}
+	if (maps->c == 0 && maps->map[maps->py + (y)][maps->px + (x)] == 'E')
+		ft_exit();
+	if (maps->map[maps->py + (y)][maps->px + (x)] != '1' && !*check)
+	{
+		maps->map[maps->py][maps->px] = '0';
+		maps->map[maps->exit_y][maps->exit_x] = 'E';
+		maps->map[maps->py + (y)][maps->px + (x)] = 'P';
+		maps->move++;
+		maps->py = maps->py + (y);
+		maps->px = maps->px + (x);
+	}
+}
 
-// 	i = 0;
-// 	count = 0;
-// 	while (maps->map[i])
-// 	{
-// 		j = 0;
-// 		while (maps->map[i][j])
-// 		{
-// 			if (maps->map[i][j] == 'C')
-// 				count++;
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	maps->c = count;
-// }
-
-void	ft_move(t_maps *maps, int x, int y)
+void	ft_move(t_maps *m, int x, int y)
 {
 	int		check;
 
 	check = 0;
-	if ((maps->py + (y)) < maps->height && (maps->px + (x)) < maps->width)
+	if ((m->py + (y)) < m->height && (m->px + (x)) < m->width)
 	{
-		if (maps->map[maps->py + (y)][maps->px + (x)] != '1')
+		if (m->map[m->py + (y)][m->px + (x)] != '1')
 		{
-			if (maps->map[maps->py + (y)][maps->px + (x)] == 'C')
-				(maps->c)--;
-			if (maps->c && maps->py == maps->exit_y &&  maps->px == maps->exit_x)
+			(m->map[m->py + (y)][m->px + (x)] == 'C') && ((m->c)--);
+			if (m->c && m->py == m->exit_y && m->px == m->exit_x)
 			{
-				if (maps->map[maps->py][maps->px] != '1' && maps->map[maps->exit_y][maps->exit_x] != '1')
+				if (m->map[m->py][m->px] != '1'
+					&& m->map[m->exit_y][m->exit_x] != '1')
 				{
 					check = 1;
-					maps->map[maps->py][maps->px] = '0';
-					maps->map[maps->exit_y][maps->exit_x] = 'P';
-					maps->move++;
-					printf("%d\n", maps->move);
-					maps->py = maps->py + (y);
-					maps->px = maps->px + (x);
+					m->map[m->py][m->px] = '0';
+					m->map[m->exit_y][m->exit_x] = 'P';
+					m->move++;
+					m->py = m->py + (y);
+					m->px = m->px + (x);
 				}
 			}
-			if (maps->map[maps->py][maps->px] != '1')
-			{
-				maps->map[maps->py][maps->px] = 'P';
-				maps->map[maps->exit_y][maps->exit_x] = 'E';
-			}
-			if (maps->c == 0 && maps->map[maps->py + (y)][maps->px + (x)] == 'E')
-				ft_exit();
-			if (maps->map[maps->py + (y)][maps->px + (x)] != '1' && !check)
-			{
-				maps->map[maps->py][maps->px] = '0';
-				maps->map[maps->exit_y][maps->exit_x] = 'E';
-				maps->map[maps->py + (y)][maps->px + (x)] = 'P';
-				maps->move++;
-				printf("%d\n", maps->move);
-				maps->py = maps->py + (y);
-				maps->px = maps->px + (x);
-			}
+			ft_helper(m, x, y, &check);
 		}
-		ft_draw(maps);
+		ft_draw(m);
 	}
 }
 
-static int	keys_lord(int	k, t_maps *map)
+static int	keys_lord(int k, t_maps *map)
 {
 	(void)map;
 	if (k == 53)

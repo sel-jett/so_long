@@ -6,29 +6,30 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:18:13 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 06:49:22 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/04 22:58:25 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "so_long.h"
+#include "so_long.h"
 
-void	ft_srch_place(t_maps *maps)
+void	ft_srch_place(t_maps *m)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (maps->map[i])
+	while (m->map[i])
 	{
 		j = 0;
-		while (maps->map[i][j])
+		while (m->map[i][j])
 		{
-			if (maps->map[i][j] == '0' && maps->map[i + 1][j] == '0' && maps->map[i + 2][j] == '0')
+			if ((m->map[i][j] == '0' || m->map[i][j] == 'P')
+				&& (m->map[i][j + 1] == '0' || m->map[i][j + 1] == 'P')
+					&& (m->map[i][j + 2] == '0' || m->map[i][j + 2] == 'P'))
 			{
-				maps->enemy_x = j;
-				maps->enemy_y = i;
-				return ;
+				m->enemy_x = i;
+				m->enemy_y = j;
 			}
 			j++;
 		}
@@ -36,18 +37,53 @@ void	ft_srch_place(t_maps *maps)
 	}
 }
 
-void	draw_enemy(t_maps *map)
+int	affiche(t_maps *m)
 {
-	ft_srch_place(map);
-	printf("%d, %d\n", map->enemy_x, map->enemy_y);
+	static int	check;
+	int			y;
+	int			x;
+
+	x = m->enemy_x;
+	y = m->enemy_y;
+	if (check < 20)
+	{
+		mlx_put_image_to_window(m->p_mlx, m->w_mlx, m->arr[6], y * 50, x * 50);
+		check++;
+	}
+	else if (check < 40)
+	{
+		mlx_put_image_to_window(m->p_mlx, m->w_mlx, m->arr[7], y * 50, x * 50);
+		check++;
+	}
+	else if (check < 60 && check++)
+		mlx_put_image_to_window(m->p_mlx, m->w_mlx, m->arr[8], y * 50, x * 50);
+	else if (check < 70)
+	{
+		mlx_put_image_to_window(m->p_mlx, m->w_mlx, m->arr[9], y * 50, x * 50);
+		check = 0;
+	}
+	return (1);
 }
 
-void	ft_mlx(t_maps *map)
+void	draw_enemy(t_maps *map)
 {
-	map->p_mlx = mlx_init();
-	map->w_mlx = mlx_new_window(map->p_mlx, (map->width * 50), ((map->height + 1) * 50), "TopG l9wada");
-	ft_draw(map);
-	// draw_enemy(map);
-	ft_hook_mlx(map);
-	mlx_loop(map->p_mlx);
+	int	i;
+
+	i = -1;
+	ft_srch_place(map);
+	mlx_loop_hook(map->p_mlx, affiche, map);
+}
+
+void	ft_mlx(t_maps *m)
+{
+	int	h;
+	int	w;
+
+	h = m->height;
+	w = m->width;
+	m->p_mlx = mlx_init();
+	m->w_mlx = mlx_new_window(m->p_mlx, (w * 50), ((h + 1) * 50), "so_long");
+	ft_draw(m);
+	ft_hook_mlx(m);
+	mlx_loop(m->p_mlx);
 }
