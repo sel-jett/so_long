@@ -1,5 +1,6 @@
 SRC = get_next_line.c get_next_line_utils.c my_malloc.c main.c \
-	  utils.c ft_strchr.c ft_split.c ft_strlcpy.c flood_fill.c
+	  utils.c ft_strchr.c ft_split.c ft_strlcpy.c flood_fill.c \
+	  mlx.c point_img.c hook_mlx.c ft_itoa.c
 
 OBJ = ${SRC:.c=.o}
 

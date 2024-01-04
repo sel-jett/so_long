@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:31:52 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 02:06:25 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/04 04:57:17 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ char	*ft_parser(char *av)
 		if (line2)
 			parser = ft_strjoin(parser, "\n");
 		map = ft_strjoin(map, parser);
-		free(parser);
 		if (!line2)
 			break ;
 		j++;
