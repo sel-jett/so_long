@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:29:42 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 02:00:46 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 02:50:23 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_init_map(t_maps *maps)
 int	main(int ac, char **av)
 {
 	t_maps	*maps;
+	// char	*line;
 	int		i;
 
 	i = 0;
@@ -36,6 +37,7 @@ int	main(int ac, char **av)
 	maps = my_malloc(sizeof(t_maps), 1);
 	ft_init_map(maps);
 	maps->map = ft_split(ft_check_map(av[1], maps), '\n');
+	// exit(1);
 	if (!valid_flood(maps))
 		exit(1);
 	ft_mlx(maps);

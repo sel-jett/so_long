@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:31:52 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 23:34:37 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 02:52:07 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,17 @@ int	ft_search(char *str)
 	}
 	return (0);
 }
-
+// int ox_fun()
+// {
+// 	static int i = 0;
+// 	if (i == 4)
+// 	{
+// 		i = 0;
+// 		exit(0);
+// 	}
+// 	i++;
+// 	return (0);
+// }
 static void	ft_helper(t_maps *maps, int fd, char *line, int *line1)
 {
 	int	check;
@@ -85,7 +95,8 @@ static void	ft_helper(t_maps *maps, int fd, char *line, int *line1)
 		else if (!line2)
 			return ;
 		(maps->height)++;
-		(line[*line1 - 1] != '1') && (ft_error(line, 1), 0);
+		if (ft_countt(line) > *line1)
+			(line[*line1 - 1] != '1') && (ft_error(line, 1), 0);
 		(line[0] != '1') && (ft_error(line, 1), 0);
 		(*line1 != line2) && (ft_error(line, 0), 0);
 	}
@@ -107,6 +118,7 @@ char	*ft_check_map(char *av, t_maps *maps)
 	line1 = ft_countt(line);
 	maps->width = line1;
 	ft_helper(maps, fd, line, &line1);
+	// exit(1);
 	free(line);
 	close(fd);
 	if (maps->p != 1 || maps->exit != 1 || maps->c < 1)
