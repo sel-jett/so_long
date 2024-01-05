@@ -16,7 +16,7 @@ OBJB = ${SRCB:.c=.o}
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 NAME = so_long
 

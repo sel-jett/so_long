@@ -6,11 +6,11 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 23:21:37 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 01:52:45 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:50:38 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "so_long_bonus.h"
 
 size_t	ft_strlen(char *str)
 {
@@ -59,11 +59,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s2)
 		return (s1);
 	size = ft_strlen(s1) + ft_strlen(s2);
-	str = malloc(sizeof(char) * (size + 1));
-	if (!str)
-		return (NULL);
+	str = my_malloc((sizeof(char) * (size + 1)), 1);
 	str = my_strcpy(s1, s2, str);
-	free(s1);
 	return (str);
 }
 

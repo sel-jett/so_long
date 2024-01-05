@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 03:38:27 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 01:51:22 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:42:39 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ char	*ft_itoa(int n)
 
 	nb = (long long)n;
 	mal = ft_count(nb);
-	str = malloc(sizeof(char) * mal + 1);
-	if (!str)
-		return (0);
+	str = my_malloc((sizeof(char) * mal + 1), 1);
 	str = my_func(str, nb, mal);
 	return (str);
 }

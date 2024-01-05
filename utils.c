@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:31:52 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 03:27:28 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:54:37 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static void	ft_error(char *line, int mode)
 {
+	(void)line;
 	if (mode == 1)
 		write(2, "borders error\n", 14);
 	else
 		write(2, "Ivalid input\n", 13);
-	free(line);
-	exit(1);
+	my_malloc(0, 0);
 }
 
 int	ft_checker(char *line)
@@ -66,17 +66,7 @@ int	ft_search(char *str)
 	}
 	return (0);
 }
-// int ox_fun()
-// {
-// 	static int i = 0;
-// 	if (i == 4)
-// 	{
-// 		i = 0;
-// 		exit(0);
-// 	}
-// 	i++;
-// 	return (0);
-// }
+
 static void	ft_helper(t_maps *maps, int fd, char *line, int *line1)
 {
 	int	check;
@@ -89,9 +79,9 @@ static void	ft_helper(t_maps *maps, int fd, char *line, int *line1)
 		line = get_next_line(fd);
 		line2 = ft_countt(line);
 		if (line2 == 0 && !check)
-			(1) && (write(2, "borders error\n", 14), free(line), exit(1), 0);
+			(1) && (write(2, "borders error\n", 14), my_malloc(0, 0), 0);
 		else if (line && *line == '\0')
-			(1) && (write(2, "borders error\n", 14), free(line), exit(1), 0);
+			(1) && (write(2, "borders error\n", 14), my_malloc(0, 0), 0);
 		else if (!line2)
 			return ;
 		(maps->height)++;
@@ -110,18 +100,17 @@ char	*ft_check_map(char *av, t_maps *maps)
 	char	*parser;
 
 	fd = open(av, O_RDONLY);
-	(fd < 0) && (write(2, "File doesn't exist\n", 19), exit(1), 0);
+	(fd < 0) && (write(2, "File doesn't exist\n", 19), my_malloc(0, 0), 0);
 	line = get_next_line(fd);
-	(!line) && (write(2, "Empty File\n", 11), exit(1), 0);
+	(!line) && (write(2, "Empty File\n", 11), my_malloc(0, 0), 0);
 	if (!ft_checker(line))
-		(1) && (write(2, "borders error\n", 14), exit(1), 0);
+		(1) && (write(2, "borders error\n", 14), my_malloc(0, 0), 0);
 	line1 = ft_countt(line);
 	maps->width = line1;
 	ft_helper(maps, fd, line, &line1);
-	free(line);
 	close(fd);
 	if (maps->p != 1 || maps->exit != 1 || maps->c < 1)
-		exit(1);
+		my_malloc(0, 0);
 	parser = ft_parser(av);
 	return (parser);
 }

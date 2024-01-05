@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 02:20:57 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/03 23:18:30 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:45:59 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,12 @@ static	char	**ft_fill_str(char **str, char const *s, char c)
 		calc = i;
 		while (s[i] && s[i] != c)
 			i++;
-		str[pos] = malloc(sizeof(char) * (i - calc + 1));
-		if (!str[pos])
-			return (0);
+		str[pos] = my_malloc((sizeof(char) * (i - calc + 1)), 1);
 		ft_strlcpy(str[pos], (s + calc), (i - calc + 1));
 		pos++;
 	}
 	str[pos] = NULL;
 	return (str);
-}
-
-void	ft_free(char **str, int len)
-{
-	int	i;
-
-	(void)len;
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
 }
 
 char	**ft_split(char const *s, char c)
@@ -83,13 +67,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	words = count_words(s, c);
-	str = malloc(sizeof(char *) * (words + 1));
-	if (!str)
-		return (0);
-	if (!ft_fill_str(str, s, c))
-	{
-		ft_free(str, words);
-		return (0);
-	}
+	str = my_malloc((sizeof(char *) * (words + 1)), 1);
+	ft_fill_str(str, s, c);
 	return (str);
 }
