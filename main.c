@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:29:42 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 23:35:20 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 02:00:46 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_init_map(t_maps *maps)
 	maps->exit_y = 0;
 	maps->width = 0;
 	maps->height = 0;
-	maps->move = 0;
 }
 
 int	main(int ac, char **av)

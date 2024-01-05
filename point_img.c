@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:06:44 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 23:30:13 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 01:59:31 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	get_path(t_maps *map)
 {
 	int		i;
-	char	*path[10];
+	char	*path[6];
 	int		n;
 	int		m;
 
@@ -26,11 +26,7 @@ static void	get_path(t_maps *map)
 	path[3] = "img/open.xpm";
 	path[4] = "img/player.xpm";
 	path[5] = "img/wall.xpm";
-	path[6] = "img/enemy_1.xpm";
-	path[7] = "img/enemy_2.xpm";
-	path[8] = "img/enemy_3.xpm";
-	path[9] = "img/enemy_4.xpm";
-	while (++i < 10)
+	while (++i < 6)
 	{
 		map->arr[i] = mlx_xpm_file_to_image(map->p_mlx, path[i], &n, &m);
 		if (!map->arr[i] || n > 50 || m > 50)
@@ -58,7 +54,6 @@ void	ft_draw(t_maps *m)
 {
 	int		i;
 	int		j;
-	char	*line;
 
 	get_path(m);
 	i = 0;
@@ -72,10 +67,6 @@ void	ft_draw(t_maps *m)
 		}
 		i++;
 	}
-	draw_enemy(m);
 	if (m->enemy_x == m->py && m->enemy_y == m->px)
 		exit(1);
-	line = ft_itoa(m->move);
-	mlx_string_put(m->p_mlx, m->w_mlx, 10, 10, 0xFFF933, line);
-	free(line);
 }

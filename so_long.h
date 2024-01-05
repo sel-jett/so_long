@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:25:25 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/04 23:29:02 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 01:59:54 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_mlx(t_maps *map);
 void	draw_enemy(t_maps *map);
 void	ft_draw(t_maps *maps);
 void	ft_strcpy(char *dest, char *src);
-char	*ft_itoa(int n);
 int		valid_flood(t_maps *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 05:16:01 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 01:52:51 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 02:13:47 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_helper(t_maps *maps, int x, int y, int *check)
 		maps->map[maps->exit_y][maps->exit_x] = 'E';
 		maps->map[maps->py + (y)][maps->px + (x)] = 'P';
 		maps->move++;
+		ft_putstr_fd(ft_itoa(maps->move));
 		maps->py = maps->py + (y);
 		maps->px = maps->px + (x);
 	}
@@ -52,10 +53,10 @@ void	ft_move(t_maps *m, int x, int y)
 				if (m->map[m->py][m->px] != '1'
 					&& m->map[m->exit_y][m->exit_x] != '1')
 				{
-					check = 1;
-					m->map[m->py][m->px] = '0';
+					(check = 1) && (m->map[m->py][m->px] = '0');
 					m->map[m->exit_y][m->exit_x] = 'P';
 					m->move++;
+					ft_putstr_fd(ft_itoa(m->move));
 					m->py = m->py + (y);
 					m->px = m->px + (x);
 				}
