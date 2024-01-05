@@ -32,7 +32,7 @@ bonus: ${BNAME}
 
 %o : %c so_long.h get_next_line.h structs.h
 	@echo "Compiling $<"
-	@${CC} ${FLAGS} -c $< -o $@
+	@${CC} ${FLAGS} -Imlx -c $< -o $@
 
 
 ${NAME}: ${OBJ}
