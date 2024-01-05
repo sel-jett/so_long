@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:31:52 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 03:49:48 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 04:21:49 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	ft_error(char *line, int mode)
 {
+	(void)line;
 	if (mode == 1)
 		write(2, "borders error\n", 14);
 	else
@@ -84,8 +85,9 @@ static void	ft_helper(t_maps *maps, int fd, char *line, int *line1)
 		else if (!line2)
 			return ;
 		(maps->height)++;
-		if (ft_countt(line) > *line1)
-			(line[*line1 - 1] != '1') && (ft_error(line, 1), 0);
+		if (ft_countt(line) >= *line1)
+			if (line[*line1 - 1] != '1')
+				(ft_error(line, 1), 0);
 		(line[0] != '1') && (ft_error(line, 1), 0);
 		(*line1 != line2) && (ft_error(line, 0), 0);
 	}

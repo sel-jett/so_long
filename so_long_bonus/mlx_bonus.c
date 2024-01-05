@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:18:13 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 03:27:30 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 04:08:40 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ void	ft_mlx(t_maps *m)
 	w = m->width;
 	m->p_mlx = mlx_init();
 	if (!m->p_mlx)
-		exit(1)
+		my_malloc(0, 0);
 	m->w_mlx = mlx_new_window(m->p_mlx, (w * 50), ((h + 1) * 50), "so_long");
 	if (!m->w_mlx)
-		exit(1)
+		my_malloc(0, 0);
 	ft_draw(m);
 	ft_hook_mlx(m);
 	mlx_loop(m->p_mlx);

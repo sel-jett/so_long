@@ -6,11 +6,11 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 23:21:41 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 03:47:49 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 04:26:29 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "so_long_bonus.h"
 
 char	*get_the_line(char *str)
 {
@@ -42,7 +42,7 @@ char	*get_the_rest(char *str, size_t size)
 	len = ft_strlen(str);
 	lgth = len - size;
 	if (lgth <= 0)
-		my_malloc(0, 0);
+		return (NULL);
 	rest = my_malloc((sizeof(char) * (lgth + 1)), 1);
 	while (++i < lgth && str[size + i])
 		rest[i] = str[size + i];
