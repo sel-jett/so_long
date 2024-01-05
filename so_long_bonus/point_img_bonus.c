@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:06:44 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 03:48:52 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 05:09:51 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,11 @@ void	ft_draw(t_maps *m)
 	}
 	draw_enemy(m);
 	if (m->enemy_x == m->py && m->enemy_y == m->px)
+	{
+		ft_putstr_fd("metti");
 		my_malloc(0, 0);
+	}
 	line = ft_itoa(m->move);
 	i = mlx_string_put(m->p_mlx, m->w_mlx, 10, 10, 0xFFF933, line);
-	if (i == -1)
-		my_malloc(0, 0);
+	(i == -1) && (my_malloc(0, 0), 0);
 }

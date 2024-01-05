@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:18:13 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 04:08:40 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 05:06:51 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,25 @@
 
 void	ft_srch_place(t_maps *m)
 {
-	int	i;
-	int	j;
+	static int	check;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
+	if (check != 0)
+		return ;
 	while (m->map[i])
 	{
 		j = 0;
 		while (m->map[i][j])
 		{
-			if ((m->map[i][j] == '0' || m->map[i][j] == 'P')
-				&& (m->map[i][j + 1] == '0' || m->map[i][j + 1] == 'P'))
+			if ((m->map[i][j] == '0' )
+				&& (m->map[i + 1][j] == '0'))
 			{
 				m->enemy_x = i;
 				m->enemy_y = j;
+				check = 1;
 			}
 			j++;
 		}

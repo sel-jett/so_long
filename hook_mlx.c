@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 05:16:01 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 04:09:57 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 05:16:15 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	ft_helper(t_maps *maps, int x, int y, int *check)
 		maps->map[maps->exit_y][maps->exit_x] = 'E';
 	}
 	if (maps->c == 0 && maps->map[maps->py + (y)][maps->px + (x)] == 'E')
-		my_malloc(0, 0);
+	{
+		ft_putstr_fd("You've won Lord abe");
+		my_malloc(0, 2);
+	}
 	if (maps->map[maps->py + (y)][maps->px + (x)] != '1' && !*check)
 	{
 		maps->map[maps->py][maps->px] = '0';
