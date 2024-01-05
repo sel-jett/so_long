@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:29:42 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 03:37:06 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/06 00:55:47 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ void	ft_init_map(t_maps *maps)
 	maps->exit_y = 0;
 	maps->width = 0;
 	maps->height = 0;
-}
-
-void f()
-{
-	system("leaks so_long");
+	maps->move = 0;
 }
 
 int	main(int ac, char **av)
@@ -37,7 +33,6 @@ int	main(int ac, char **av)
 	int		i;
 
 	i = 0;
-	atexit(f);
 	ft_check_args(ac, av);
 	maps = my_malloc(sizeof(t_maps), 1);
 	ft_init_map(maps);

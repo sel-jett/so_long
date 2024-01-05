@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 21:37:44 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/06 00:51:35 by sel-jett         ###   ########.fr       */
+/*   Created: 2023/11/01 06:00:10 by sel-jett          #+#    #+#             */
+/*   Updated: 2024/01/06 00:49:07 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_data
-{
-	void			*data;
-	struct s_data	*next;
-}	t_data;
+#include "so_long.h"
 
-typedef struct s_schr
+void	ft_putstr_fd(char *s)
 {
-	char	**map;
-	int		p;
-	int		px;
-	int		py;
-	int		c;
-	int		exit;
-	int		exit_x;
-	int		exit_y;
-	int		enemy_x;
-	int		enemy_y;
-	int		width;
-	int		height;
-	int		move;
-	void	*arr[6];
-	void	*p_mlx;
-	void	*w_mlx;
-}	t_maps;
+	if (!s)
+		return ;
+	while (*s)
+	{
+		write(1, s, 1);
+		s++;
+	}
+	write(1, "\n", 1);
+}

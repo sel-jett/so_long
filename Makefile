@@ -2,7 +2,7 @@ bon = so_long_bonus/
 
 SRC = get_next_line.c get_next_line_utils.c my_malloc.c main.c \
 	  utils.c ft_strchr.c ft_split.c ft_strlcpy.c flood_fill.c \
-	  mlx.c point_img.c hook_mlx.c
+	  mlx.c point_img.c hook_mlx.c ft_putstr_fd.c ft_itoa.c
 
 SRCB = $(bon)get_next_line_bonus.c $(bon)get_next_line_utils_bonus.c $(bon)my_malloc_bonus.c \
 	  $(bon)main_bonus.c $(bon)utils_bonus.c $(bon)ft_strchr_bonus.c \
