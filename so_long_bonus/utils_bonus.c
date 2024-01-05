@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:31:52 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 02:32:36 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:27:31 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ static void	ft_helper(t_maps *maps, int fd, char *line, int *line1)
 		else if (!line2)
 			return ;
 		(maps->height)++;
-		(line[*line1 - 1] != '1') && (ft_error(line, 1), 0);
+		if (ft_countt(line) > *line1)
+			(line[*line1 - 1] != '1') && (ft_error(line, 1), 0);
 		(line[0] != '1') && (ft_error(line, 1), 0);
 		(*line1 != line2) && (ft_error(line, 0), 0);
 	}
@@ -99,9 +100,9 @@ char	*ft_check_map(char *av, t_maps *maps)
 	char	*parser;
 
 	fd = open(av, O_RDONLY);
-	(fd < 0) && (write(2, "File doesn't exist\n", 19), my_malloc(0, 0), 0);
+	(fd < 0) && (write(2, "File doesn't exist\n", 19), free(line), exit(1), 0);
 	line = get_next_line(fd);
-	(!line) && (write(2, "Empty File\n", 11), my_malloc(0, 0), 0);
+	(!line) && (write(2, "Empty File\n", 11), free(line), exit(1), 0);
 	if (!ft_checker(line))
 		(1) && (write(2, "borders error\n", 14), free(line), exit(1), 0);
 	line1 = ft_countt(line);
@@ -110,7 +111,7 @@ char	*ft_check_map(char *av, t_maps *maps)
 	free(line);
 	close(fd);
 	if (maps->p != 1 || maps->exit != 1 || maps->c < 1)
-		my_malloc(0, 0);
+		exit(1);
 	parser = ft_parser(av);
 	return (parser);
 }

@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 21:58:00 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 01:53:05 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:27:30 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error(void)
 {
 	write(2, "Invalid file Input !!\n", ft_strlen("Invalid file Input !!\n"));
-	my_malloc(0, 0);
+	exit(1)
 }
 
 void	dataclear(t_data **hold)

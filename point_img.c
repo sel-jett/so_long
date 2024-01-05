@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:06:44 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 01:59:31 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:27:27 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	get_path(t_maps *map)
 	{
 		map->arr[i] = mlx_xpm_file_to_image(map->p_mlx, path[i], &n, &m);
 		if (!map->arr[i] || n > 50 || m > 50)
-			my_malloc(0, 0);
+			exit(1);
 	}
 }
 

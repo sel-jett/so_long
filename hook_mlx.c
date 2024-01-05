@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 05:16:01 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 02:00:28 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:27:23 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	ft_exit(void)
 {
 	exit(1);
+	return (0);
 }
 
 void	ft_helper(t_maps *maps, int x, int y, int *check)
@@ -25,7 +26,7 @@ void	ft_helper(t_maps *maps, int x, int y, int *check)
 		maps->map[maps->exit_y][maps->exit_x] = 'E';
 	}
 	if (maps->c == 0 && maps->map[maps->py + (y)][maps->px + (x)] == 'E')
-		ft_exit();
+		exit(1);
 	if (maps->map[maps->py + (y)][maps->px + (x)] != '1' && !*check)
 	{
 		maps->map[maps->py][maps->px] = '0';
@@ -68,7 +69,7 @@ static int	keys_lord(int k, t_maps *map)
 {
 	(void)map;
 	if (k == 53)
-		ft_exit();
+		exit(0);
 	else if (k == 126 || k == 13)
 		ft_move(map, 0, -1);
 	else if (k == 125 || k == 1)
@@ -77,13 +78,16 @@ static int	keys_lord(int k, t_maps *map)
 		ft_move(map, 1, 0);
 	else if (k == 123 || k == 0)
 		ft_move(map, -1, 0);
-	mlx_clear_window(map->p_mlx, map->w_mlx);
+	if (mlx_clear_window(map->p_mlx, map->w_mlx) == -1)
+		exit(1);
 	ft_draw(map);
 	return (1);
 }
 
 void	ft_hook_mlx(t_maps *maps)
 {
-	mlx_hook(maps->w_mlx, 17, 0, ft_exit, maps);
-	mlx_hook(maps->w_mlx, 2, 0, keys_lord, maps);
+	if (mlx_hook(maps->w_mlx, 17, 0, ft_exit, maps) == -1)
+		exit(1);;
+	if (mlx_hook(maps->w_mlx, 2, 0, keys_lord, maps) == -1)
+		exit(1);;
 }

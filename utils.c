@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:31:52 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 02:52:07 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:27:28 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,19 +110,18 @@ char	*ft_check_map(char *av, t_maps *maps)
 	char	*parser;
 
 	fd = open(av, O_RDONLY);
-	(fd < 0) && (write(2, "File doesn't exist\n", 19), my_malloc(0, 0), 0);
+	(fd < 0) && (write(2, "File doesn't exist\n", 19), exit(1), 0);
 	line = get_next_line(fd);
-	(!line) && (write(2, "Empty File\n", 11), my_malloc(0, 0), 0);
+	(!line) && (write(2, "Empty File\n", 11), exit(1), 0);
 	if (!ft_checker(line))
-		(1) && (write(2, "borders error\n", 14), free(line), exit(1), 0);
+		(1) && (write(2, "borders error\n", 14), exit(1), 0);
 	line1 = ft_countt(line);
 	maps->width = line1;
 	ft_helper(maps, fd, line, &line1);
-	// exit(1);
 	free(line);
 	close(fd);
 	if (maps->p != 1 || maps->exit != 1 || maps->c < 1)
-		my_malloc(0, 0);
+		exit(1);
 	parser = ft_parser(av);
 	return (parser);
 }

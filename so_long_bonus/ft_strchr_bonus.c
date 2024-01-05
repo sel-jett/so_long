@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:43:57 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 01:51:33 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:27:29 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_strchr(const char *s, t_maps *maps)
 		else if (s[i] == 'C')
 			(maps->c)++;
 		else if (s[i] != '1' && s[i] != '0')
-			my_malloc(0, 0);
+			exit(1)
 		i++;
 	}
 }
