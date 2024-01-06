@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 05:16:01 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/06 00:53:16 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/06 10:01:44 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	keys_lord(int k, t_maps *map)
 {
 	(void)map;
 	if (k == 53)
-		my_malloc(0 ,0);
+		my_malloc(0, 0);
 	else if (k == 126 || k == 13)
 		ft_move(map, 0, -1);
 	else if (k == 125 || k == 1)

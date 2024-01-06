@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:26:34 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/06 00:58:35 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/06 10:01:13 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	ft_countt(char *line)
 void	ft_check_args(int ac, char **av)
 {
 	(ac != 2) && (write(2, "Invalid Arguments", 18), my_malloc(0, 0), 0);
-	(!ft_search(av[1])) && (write(2, "Invalid file type\n", 18), my_malloc(0, 0), 0);
+	if (!ft_search(av[1]))
+		(1) && (write(2, "Invalid file type\n", 18), my_malloc(0, 0), 0);
 }
 
 char	*ft_parser(char *av)
