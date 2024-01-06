@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:31:52 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 04:01:51 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/06 01:07:50 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ char	*ft_check_map(char *av, t_maps *maps)
 	ft_helper(maps, fd, line, &line1);
 	close(fd);
 	if (maps->p != 1 || maps->exit != 1 || maps->c < 1)
-		my_malloc(0, 0);
+		ft_error_zero();
 	parser = ft_parser(av);
 	return (parser);
 }

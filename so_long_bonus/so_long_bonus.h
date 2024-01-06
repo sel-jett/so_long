@@ -6,7 +6,7 @@
 /*   By: sel-jett <sel-jett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:25:25 by sel-jett          #+#    #+#             */
-/*   Updated: 2024/01/05 02:14:07 by sel-jett         ###   ########.fr       */
+/*   Updated: 2024/01/06 01:08:21 by sel-jett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 void	*my_malloc(size_t size, int mode);
 void	ft_putstr_fd(char *s);
+void	ft_error_zero(void);
 void	ft_check_args(int ac, char **av);
 char	*ft_check_map(char *av, t_maps *maps);
 void	ft_strchr(const char *s, t_maps *maps);
